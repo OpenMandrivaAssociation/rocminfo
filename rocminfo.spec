@@ -23,7 +23,7 @@ ROCm system info utility
 %prep
 %autosetup -n %{name}-rocm-%{version} -p1
 
-%{__python3} %{_rpmconfigdir}/redhat/pathfix.py -i %{__python3} rocm_agent_enumerator
+%{__python3} /usr/bin/pathfix.py -i %{__python3} rocm_agent_enumerator
 
 %build
 %cmake -DROCM_DIR=/usr
