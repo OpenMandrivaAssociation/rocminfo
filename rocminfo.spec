@@ -11,7 +11,7 @@ Patch1:		0002-fix-buildtype-detection.patch
 
 BuildRequires:	cmake
 BuildRequires:	cmake(hsa-runtime64)
-BuildRequires:	pkgcondig(python)
+BuildRequires:	pkgconfig(python)
 
 # rocminfo calls lsmod to check the kernel mode driver status
 Requires:		kmod
