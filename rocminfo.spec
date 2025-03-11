@@ -1,5 +1,5 @@
 Name:		rocminfo
-Version:	6.3.0
+Version:	6.3.3
 Release:	1
 Summary:	ROCm system info utility
 Group:		System/Configuration/ROCm
