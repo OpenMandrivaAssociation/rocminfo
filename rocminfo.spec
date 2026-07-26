@@ -1,33 +1,35 @@
 Name:		rocminfo
-Version:	6.3.3
+Version:	7.14.0
 Release:	1
 Summary:	ROCm system info utility
-Group:		System/Configuration/ROCm
 License:	NCSA
-URL:		https://github.com/RadeonOpenCompute/rocminfo
-Source0:	https://github.com/RadeonOpenCompute/rocminfo/archive/rocm-%{version}.tar.gz#/rocminfo-rocm-%{version}.tar.gz
-#Patch0:		0001-adjust-CMAKE_CXX_FLAGS.patch
-Patch1:		0002-fix-buildtype-detection.patch
+Group:		System/Configuration
+URL:		https://github.com/ROCm/rocminfo
+Source0:	https://github.com/ROCm/rocm-systems/releases/download/therock-7.14/rocminfo.tar.gz#/rocminfo-%{version}.tar.gz
 
 BuildSystem:	cmake
-BuildOption:	-DROCM_DIR=%{_prefix}
+BuildRequires:	rocm-rpm-macros
 BuildRequires:	cmake(hsa-runtime64)
 BuildRequires:	pkgconfig(python)
+# rocminfo calls lsmod
+Requires:	kmod
+Requires:	rocm-runtime
 
-# rocminfo calls lsmod to check the kernel mode driver status
-Requires:		kmod
+ExclusiveArch:	%{x86_64} %{aarch64}
 
 %description
-ROCm system info utility
+ROCm system info utility (rocminfo, rocm_agent_enumerator).
 
 %prep
-%autosetup -n %{name}-rocm-%{version} -p1
-python /usr/bin/pathfix.py -i %{__python3} rocm_agent_enumerator
+%autosetup -n rocminfo -p1
+# Fix python shebang if needed
+if [ -f rocm_agent_enumerator ]; then
+	sed -i '1s|#!.*python.*|#!%{_bindir}/python3|' rocm_agent_enumerator 2>/dev/null || true
+fi
 
 %files
 %doc README.md
 %license License.txt
 %{_bindir}/rocm_agent_enumerator
 %{_bindir}/rocminfo
-#Duplicated files:
 %exclude %{_docdir}/*/License.txt
