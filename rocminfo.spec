@@ -1,6 +1,6 @@
 Name:		rocminfo
 Version:	7.14.0
-Release:	1
+Release:	2
 Summary:	ROCm system info utility
 License:	NCSA
 Group:		System/Configuration
@@ -14,8 +14,6 @@ BuildRequires:	pkgconfig(python)
 # rocminfo calls lsmod
 Requires:	kmod
 Requires:	rocm-runtime
-
-ExclusiveArch:	%{x86_64} %{aarch64}
 
 %description
 ROCm system info utility (rocminfo, rocm_agent_enumerator).
