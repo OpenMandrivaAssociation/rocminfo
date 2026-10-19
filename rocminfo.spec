@@ -1,11 +1,11 @@
 Name:		rocminfo
-Version:	10.0.0
+Version:	10.1.0
 Release:	1
 Summary:	ROCm system info utility
 License:	NCSA
 Group:		System/Configuration
 URL:		https://github.com/ROCm/rocminfo
-Source0:	https://github.com/ROCm/rocm-systems/releases/download/therock-10.0/rocminfo.tar.gz#/rocminfo-%{version}.tar.gz
+Source0:	https://github.com/ROCm/rocm-systems/releases/download/therock-10.1/rocminfo.tar.gz#/rocminfo-%{version}.tar.gz
 
 BuildSystem:	cmake
 BuildRequires:	rocm-rpm-macros
